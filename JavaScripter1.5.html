@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cubos.css">
+</head>
+<body>
+    <div class="container-3">
+        <div class="header">
+            <h3>JScripter</h3>
+        </div>
+        <div class="sidebar">
+            <div class="formContainer">
+                <button id="button01"class="sideButton">Nueva consola</button>
+                <button  class="sideButton">Nuevo canvas</button>
+                <button id="buttonCubo" class="sideButton">Nuevo cubo</button>
+                <button id="buttonString" class="sideButton">String console</button>
+                <button id="buttonArray" class="sideButton">Array console</button>
+                <button id="buttonLink" class="sideButton">Link generator</button>
+            </div>
+        </div>
+        <div id="content"></div>
+        <div class="footer"></div>
+    </div>
+
+    <script src="cubos1.1.js"></script>
+
+    <script src="stringer1.1.js"></script>
+
+    <script src="arrayer1.1.js"></script>
+
+    <script>
+        button01.addEventListener("click", crearConsola1)
+        buttonCubo.addEventListener("click",crearCubo)
+        buttonString.addEventListener("click",crearStringer)
+        buttonArray.addEventListener("click",crearArrayer)
+
+        function crearConsola1 () {
+            let content = document.querySelector('#content');
+            content.append(createDiv());
+            let div = content.lastChild;
+            div.classList.add('botones');
+
+            div.append(createButton())
+            div.append(createButton())
+            div.append(createButton())
+
+            let boton = div.firstChild;
+            boton.textContent = "="
+            boton.classList.add('one')
+            boton.addEventListener("click",evaluar)
+
+            
+            let boton2 = boton.nextSibling;
+            boton2.textContent = "+"
+            boton2.classList.add('two')
+            boton2.addEventListener("click",crearConsola1)
+
+            
+            let boton3 = boton2.nextSibling;
+            boton3.textContent = "x"
+            boton3.classList.add('three')
+            boton3.addEventListener("click",eliminar)
+
+            content.append(createSection());
+            let section = content.lastChild;
+            section.classList.add('console');
+            section.append(createTextarea())
+            section.append(createTextarea())
+            section.firstChild.classList.add('input')
+            section.lastChild.classList.add('output')
+        }
+
+        
+        function evaluar (e) {
+            try {
+                let input = e.target.parentElement.nextSibling.firstChild
+                let resultado = eval(input.value);
+                let output = input.nextSibling
+                output.value = resultado;
+                console.log(resultado)
+                output.style.backgroundColor = "lightgreen";
+                /* textareas[index].textContent = "Todo bien, todo correcto, y yo que me alegro ;D"; */
+            } catch(error) {
+                let output = e.target.parentElement.nextSibling.lastChild
+                output.style.backgroundColor = "red";
+                output.value = error.message;
+                console.log(error.message)
+                
+            }
+        }
+
+        function eliminar (e) {
+            let botonEliminar = e.target
+            let div = e.target.parentElement
+            let section = div.nextSibling
+            div.remove()
+            section.remove()
+        }
+
+
+        function operate() {
+            let element = document.querySelector("input[name='input0']");
+            let index = element.name.split("").pop();
+        }
+        function createTextarea () {
+            return document.createElement("textarea")
+        }
+        function createInput () {
+            return document.createElement("INPUT")
+        }
+        function createLabel () {
+            return document.createElement("label")
+        }
+        function createTable () {
+            return document.createElement("table")
+        }
+        function createCaption () {
+            return document.createElement("caption")
+        }
+        function createTr () {
+            return document.createElement("tr")
+        }
+        function createTh () {
+            return document.createElement("th")
+        }
+        function createLink () {
+            return document.createElement("a")
+        }
+        function createSelect () {
+            return document.createElement("select")
+        }
+        function createOption () {
+            return document.createElement("option")
+        }
+        function createDiv () {
+            return document.createElement("div")
+        }
+        function createSection () {
+            return document.createElement("section")
+        }
+        function createButton () {
+            return document.createElement("button")
+        }
+        function createSpan () {
+            let span = document.createElement("span")
+            return span
+        }
+
+
+
+        
+    </script>
+    <script>
+        /* let input = 3; */
+        let input = "this.parentElement.nextSibling.children[0]";
+        let style = "this.parentElement.nextSibling.children[0].style";
+        //eval(style).backgroundColor 
+        //eval(style).color = "white"
+        //eval("this.parentElement.nextSibling.children[0].style.backgroundColor='blue'")
+        //eval(bg.concat('=',"'blue'"))
+        //eval(bg+'='+"'green'")
+        let bg = "this.parentElement.nextSibling.children[0].style.backgroundColor";
+
+/*         let color='red'
+        eval(bg+'='+`'${color}'`) */
+        function fondo(color) {
+            return bg+'='+`'${color}'`
+        }
+        //eval(fondo('blue'))
+    </script>
+    <script src="IQ.js"></script>
+    <script>
+    async function fetchText() {
+    let response = await fetch('https://github.com/PacktPublishing/Full-Stack-React-Projects-Second-Edition/blob/master/Chapter03%20and%2004/mern-skeleton/client/auth/PrivateRoute.js');
+    let data = await response.text();
+    console.log(data);
+}
+    </script>
+    
+</body>
+</html>

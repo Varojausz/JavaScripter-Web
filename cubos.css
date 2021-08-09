@@ -1,0 +1,195 @@
+@keyframes spinHorizontal{
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+@keyframes spinVertical{
+    from {
+        transform: rotateX(0);
+    }
+    to {
+        transform: rotateX(360deg);
+    }
+}
+@keyframes spinMixto1{
+    from {
+        transform: rotateY(45deg) rotate3d(-1,0,-1,0deg);
+    }
+    to {
+        transform: rotateY(45deg) rotate3d(-1,0,-1,360deg);
+    }
+}
+
+.containerCubo {
+    --dimension: 10rem;
+    width: var(--dimension);
+    height: var(--dimension);
+    margin: 5rem;
+    perspective: 500px;
+    position: relative;
+}
+.uno {
+    top: 0rem;
+}
+.tres {
+    bottom: 0px;
+    left: 280px;
+}
+.dos {
+    top: 10px;
+    left: 280px;
+}
+
+.inputCubo {
+    background: white;
+    height: 10vh;
+    font-size: 1rem;
+}
+.outputCubo {
+    display:flex;
+    height: 50vh;
+    width: 100%;
+    background: black;
+    color: white;
+}
+.panelCaras {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(3,1.5rem); 
+    row-gap: 1rem;
+}
+.panelCaras label {
+    color:black;
+}
+#cara1Label {
+    grid-area: 1 / 1 / auto / 1;
+}
+#cara2Label {
+    grid-area: 1 / 4 / auto / 4;
+}
+#cara3Label {
+    grid-area: 2 / 1 / auto / 1;
+}
+#cara4Label {
+    grid-area: 2 / 4 / auto / 4;
+}
+#cara5Label {
+    grid-area: 3 / 1 / auto / 1;
+}
+#cara6Label {
+    grid-area: 3 / 4 / auto / 4;
+}
+
+
+#cara1Input {
+    grid-area: 1 / 2 / auto / 2;
+}
+#cara2Input {
+    grid-area: 1 / 5 / auto / 5;
+}
+#cara3Input {
+    grid-area: 2 / 2 / auto / 2;
+}
+#cara4Input {
+    grid-area: 2 / 5 / auto / 5;
+}
+#cara5Input {
+    grid-area: 3 / 2 / auto / 2;
+}
+#cara6Input {
+    grid-area: 3 / 5 / auto / 5;
+}
+.panelRotaciones {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.divCubo {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+.outputCubo .panelCubo {
+    width: 40%;
+    background-color: var(--color4);
+}
+.cube {
+    width: var(--dimension);
+    height: var(--dimension);
+    position: relative;
+    transform-style: preserve-3d;
+    /* transform: rotateY(45deg) rotate3d(-1,0,-1,0deg); */
+    /* transform: rotateY(180deg); */
+    transform-origin:var(--origenHorizontal);
+    /* animation: spinMixto1 5s linear infinite; */
+}
+.cubo1 {
+    animation: spinMixto1 10s linear infinite;
+}
+.cubo2 {
+    animation: spinHorizontal 10s linear infinite;
+}
+.cubo3 {
+    animation: spinVertical 10s linear infinite;
+}
+.face {
+    width: var(--dimension);
+    height: var(--dimension);
+    background: white;
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid black;
+    /* opacity:0.5; */
+    text-align: center;
+}
+.top {
+    transform: rotateX(90deg) translateZ(calc(var(--dimension)/2));
+    /* background-image: url('sad.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 70%;
+    background-size: calc(var(--dimension)*0.9); */
+    background-repeat: no-repeat; 
+}
+.bottom {
+    transform: rotateX(-90deg) translateZ(calc(var(--dimension)/2));
+    /* background-image: url('sad.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 70%;
+    background-size: calc(var(--dimension)*0.9); */
+    background-repeat: no-repeat; 
+}
+.left {
+    transform: rotateY(-90deg) translateZ(calc(var(--dimension)/2));
+    /* background-image: url('leire.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 50%;
+    background-size: calc(var(--dimension)*1.2); */
+    background-repeat: no-repeat; 
+}
+.right {
+    transform: rotateY(90deg) translateZ(calc(var(--dimension)/2));
+    /* background-image: url('leire.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 50%;
+    background-size: calc(var(--dimension)*1.2); */
+    background-repeat: no-repeat; 
+}
+.back {
+    transform: rotateY(180deg) translateZ(calc(var(--dimension)/2));
+    /* background-image: url('perdon.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 70%;
+    background-size: calc(var(--dimension)*0.9); */
+    background-repeat: no-repeat; 
+}
+.front {
+    transform: translateZ(calc(var(--dimension)/2));
+    /* background-image: url('perdon.png'); */
+/*     background-position-y: 50%;
+    background-position-x: 70%;
+    background-size: calc(var(--dimension)*0.9); */
+    background-repeat: no-repeat; 
+}
